@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{!hasUserInfo && canIUse}}">
+      <image class="icon" src="../../images/show.png"></image>
+      <text class="desc">给头像加上可爱的圣诞帽，点击使用</text>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像 </button>
+      <block wx:if="{{errorMsg}}">
+        <text class="error-msg">{{errorMsg}}</text>
+      </block>
+    </block>
+    <block wx:else>
+      <canvas class="canvas" canvas-id="avatarCanvas" bindtouchstart="startMoveHat" bindtouchmove="moveHat"></canvas>
+      <slider class="rotate" bindchange="rotateHat" max="360" value="0">旋转</slider>
+      <slider class="scale"  bindchange="scaleHat" max="200" value="100">缩放</slider>
+      <button bindtap="saveImage"> 保存至相册</button>
+    </block>
+  </view>
+  
+</view>
+     
